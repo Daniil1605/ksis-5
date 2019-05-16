@@ -151,7 +151,7 @@ namespace http_filetransfer
                     var fileInfo = new FileInfo(fullPath);
                     response.Headers.Add("Name", fileInfo.Name);
                     response.Headers.Add("FileLength", fileInfo.Length.ToString());
-                    response.Headers.Add("LastWriteTime", fileInfo.LastWriteTime.ToString("yyyy/MM/dd hh:mm"));
+                    response.Headers.Add("LastWriteTime", fileInfo.LastWriteTime.ToString("dd/MM/yyyy hh:mm"));
                 }
                 catch (FileNotFoundException)
                 {
@@ -193,7 +193,7 @@ namespace http_filetransfer
 
                     foreach (var entry in directoryListing)
                     {
-                        writer.Write(JsonConvert.SerializeObject(entry, new JsonSerializerSettings() { Formatting = Formatting.Indented }));
+                        writer.Write(JsonConvert.SerializeObject(entry));
                     }
                     writer.Flush();
                 }
